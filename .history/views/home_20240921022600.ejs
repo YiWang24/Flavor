@@ -37,7 +37,9 @@
         .hero div {
             position: relative;
             z-index: 1; /* 确保文本在视频之上 */
+            background: rgba(0, 0, 0, 0.6); /* 增加透明度 */
             padding: 20px;
+            border-radius: 8px;
         }
         .hero h1, .hero p {
             color: white;
@@ -111,7 +113,7 @@
 
     <!-- Hero Section with Video Background -->
     <div class="hero">
-        <video autoplay loop muted controls>
+        <video autoplay loop muted>
             <source src="/image/hero.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>

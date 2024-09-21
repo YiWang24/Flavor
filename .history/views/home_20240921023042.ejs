@@ -7,20 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet" />
     <title>Flavor</title>
     <style>
-        body {
-            font-family: "Roboto", sans-serif;
+               body {
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: white;
+            background: black;
         }
         .hero {
             position: relative;
-            overflow: hidden;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            overflow: hidden; /* 仍然使用overflow: hidden */
         }
         .hero video {
             position: absolute;
@@ -34,10 +34,14 @@
             transform: translate(-50%, -50%);
             object-fit: cover; /* 保持视频比例 */
         }
-        .hero div {
+        .hero .content {
             position: relative;
             z-index: 1; /* 确保文本在视频之上 */
+            background: rgba(0, 0, 0, 0.5); /* 半透明背景 */
             padding: 20px;
+            border-radius: 8px;
+            display: inline-block; /* 让文本块适应内容 */
+        }
         }
         .hero h1, .hero p {
             color: white;
