@@ -44,6 +44,7 @@ passport.use(
   )
 );
 
+console.log(GOOGLE_CALLBACKURL)
 // Serialize user
 passport.serializeUser((user, done) => {
   done(null, user.id); // Store only the user ID in the session

@@ -44,6 +44,7 @@ passport.use(
   )
 );
 
+console.log()
 // Serialize user
 passport.serializeUser((user, done) => {
   done(null, user.id); // Store only the user ID in the session

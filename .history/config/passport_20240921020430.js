@@ -1,6 +1,3 @@
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config(); //Load environment variables from .env in development
-}
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
@@ -8,7 +5,7 @@ const User = require("../models/user");
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-const GOOGLE_CALLBACKURL = process.env.GOOGLE_CALLBACKURL;
+const GOOGLE_CALLBACKURL =process.env.GOOGLE_CALLBACKURL  ;
 // Initialize Local Passport
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
@@ -44,19 +41,20 @@ passport.use(
   )
 );
 
+
 // Serialize user
 passport.serializeUser((user, done) => {
-  done(null, user.id); // Store only the user ID in the session
-});
-
-// Deserialize user
-passport.deserializeUser(async (id, done) => {
-  try {
-    const user = await User.findById(id); // Fetch user by ID
-    done(null, user);
-  } catch (err) {
-    done(err);
-  }
-});
-
+    done(null, user.id); // Store only the user ID in the session
+  });
+  
+  // Deserialize user
+  passport.deserializeUser(async (id, done) => {
+    try {
+      const user = await User.findById(id); // Fetch user by ID
+      done(null, user);
+    } catch (err) {
+      done(err);
+    }
+  });
+  
 module.exports = passport;
