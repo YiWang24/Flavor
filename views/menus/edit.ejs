@@ -1,0 +1,130 @@
+<% layout('layouts/boilerplate')%>
+<div class="row mt-5">
+  <h1 class="text-center mt-5">Edit your Menu</h1>
+  <hr class="border border-danger border-2 opacity-50" />
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/menus/<%=menu.type.typeCode%>/<%=menu._id%>?_method=PUT"
+      method="post"
+      class="validated-form"
+      novalidate
+      enctype="multipart/form-data"
+    >
+    <!-- set title -->
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Title</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          name="menu[title]"
+          value="<%=menu.title%>"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please write a title.</div>
+      </div>
+      <!--Set type-->
+      <div class="mb-3">
+        <select
+          class="form-select"
+          aria-label="Select menu type"
+          name="type[typeCode]"
+          required
+        >
+        <option value="" disabled selected>Select a cuisine type</option>
+        <option value="1" <%= menu.type.typeCode == 1 ? "selected" : "" %>>Chinese Cuisine</option>
+        <option value="2" <%= menu.type.typeCode == 2 ? "selected" : "" %>>Western Cuisine</option>
+        <option value="3" <%= menu.type.typeCode == 3 ? "selected" : "" %>>Italian Cuisine</option>
+        <option value="4" <%= menu.type.typeCode == 4 ? "selected" : "" %>>Japanese Cuisine</option>
+        <option value="5" <%= menu.type.typeCode == 5 ? "selected" : "" %>>Mexican Cuisine</option>
+        <option value="6" <%= menu.type.typeCode == 6 ? "selected" : "" %>>Indian Cuisine</option>
+        <option value="7" <%= menu.type.typeCode == 7 ? "selected" : "" %>>Thai Cuisine</option>
+        <option value="8" <%= menu.type.typeCode == 8 ? "selected" : "" %>>French Cuisine</option>
+        <option value="9" <%= menu.type.typeCode == 9 ? "selected" : "" %>>Korean Cuisine</option>
+        
+        </select>
+        <div class="invalid-feedback">Please select a cuisine type.</div>
+      </div>
+      
+      <!--Set image-->
+      <div class="input-group mb-3">
+        <input
+          type="file"
+          class="form-control"
+          id="inputGroupFile02"
+          name="image"
+          multiple
+        />
+        <!-- Added name -->
+        <label class="input-group-text" for="inputGroupFile02"
+          >Upload Image</label
+        >
+        <div class="invalid-feedback">Please upload an image</div>
+      </div>
+
+      <!--Set description-->
+      <div class="input-group mb-3">
+        <span class="input-group-text">Description</span>
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          name="menu[description]"
+          rows="4"
+          required
+        ><%=menu.description%></textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="invalid-feedback">Please write a description!</div>
+
+      <!--show all image-->
+      <div class="mb-3 d-flex flex-wrap">
+        <% menu.images.forEach(function (img, i) { %>
+        <div class="image-container text-center" style="margin: 10px;">
+          <img
+            src="<%= img.imageUrl %>"
+            class="img-thumbnail"
+            alt="<%= img.imageName %>"
+            style="width: 150px; height: 150px; object-fit: cover;" 
+          />
+          <div class="mt-2">
+            <input
+              type="checkbox"
+              id="image-<%= i %>"
+              name="deleteImages[]"
+              value="<%= img._id %>"
+              class="form-check-input"
+            />
+            <label for="image-<%= i %>" class="btn btn-danger btn-sm">Delete</label>
+          </div>
+        </div>
+        <% }) %>
+      </div>
+      
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button type="submit" class="btn btn-lg btn-success col-4">
+          Submit
+        </button>
+        <button type="reset" class="btn btn-lg btn-secondary col-4">
+          Reset
+        </button>
+      </div>
+    </form>
+    <a
+      href="/menus/<%=menu.type.typeCode%>/<%=menu._id%>"
+      class="btn btn-outline-secondary btn-lg"
+      style="
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-decoration: none;
+      "
+    >
+      <i class="bi bi-arrow-left"></i> Back to This Menus
+    </a>
+  </div>
+</div>
+

@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="http://yiwang.run/">
+      <img
+        src="/image/Logo.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt="LOGO"
+      />
+      lovely Meng
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/menus">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/albums">Album</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/messageBoards">MessageBoard</a>
+        </li>
+        <li class="nav-item"></li>
+          <a class="nav-link" href="/anniversaries">Anniversary</a>
+        </li>
+        <div class="navbar-nav ml-auto">
+          <% if(!currentUser) {%>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+          <% } else {%>
+          <a class="nav-link" href="/logout">Logout</a>
+          <% } %>
+        </div>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,101 @@
+<% layout('layouts/boilerplate')%>
+<div class="row mt-5">
+  <h1 class="text-center mt-5">Create your own Menu</h1>
+  <hr class="border border-danger border-2 opacity-50" />
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/menus"
+      method="post"
+      class="validated-form"
+      novalidate
+      enctype="multipart/form-data"
+    >
+      <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default"
+          >Title</span
+        >
+        <input
+          type="text"
+          class="form-control"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-default"
+          name="menu[title]"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please write a title.</div>
+      </div>
+
+      <div class="mb-3">
+        <select
+          class="form-select"
+          aria-label="Select menu type"
+          name="type[typeCode]"
+          required
+        >
+          <option value="" disabled selected>Select a cuisine type</option>
+          <!-- Improved default option -->
+          <option value="1">Chinese Cuisine</option>
+          <option value="2">Western Cuisine</option>
+          <option value="3">Italian Cuisine</option>
+          <option value="4">Japanese Cuisine</option>
+          <option value="5">Mexican Cuisine</option>
+          <option value="6">Indian Cuisine</option>
+          <option value="7">Thai Cuisine</option>
+          <option value="8">French Cuisine</option>
+          <option value="9">Korean Cuisine</option>
+        </select>
+        <div class="invalid-feedback">Please select a choose.</div>
+      </div>
+
+      <div class="input-group mb-3">
+        <input
+          type="file"
+          class="form-control"
+          id="inputGroupFile02"
+          name="image"
+          multiple
+          required
+        />
+        <!-- Added name -->
+        <label class="input-group-text" for="inputGroupFile02"
+          >Upload Image</label
+        >
+        <div class="invalid-feedback">Please upload an image</div>
+      </div>
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">Description</span>
+        <textarea
+          class="form-control"
+          aria-label="With textarea"
+          name="menu[description]"
+          rows="4"
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks good!</div>
+      </div>
+      <div class="invalid-feedback">Please write a description!</div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <button type="submit" class="btn btn-lg btn-success col-4">
+          Submit
+        </button>
+        <button type="reset" class="btn btn-lg btn-secondary col-4">
+          Reset
+        </button>
+      </div>
+    </form>
+    <a
+      href="/menus"
+      class="btn btn-outline-secondary btn-lg"
+      style="
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        text-decoration: none;
+      "
+    >
+      <i class="bi bi-arrow-left"></i> Back to All Menus
+    </a>
+  </div>
+</div>
