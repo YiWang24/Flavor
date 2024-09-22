@@ -1,0 +1,151 @@
+body {
+  margin: 0; /* 去掉默认边距 */
+  min-height: 100vh; /* 使内容区至少与视口高度相同 */
+  position: relative; /* 相对定位以便 footer 能够相对于它定位 */
+}
+
+header {
+  position: absolute; /* 使导航栏绝对定位 */
+  top: 0; /* 定位到顶部 */
+  left: 0; /* 定位到左侧 */
+  right: 0; /* 定位到右侧 */
+  background-color: rgba(255, 255, 255, 0); /* 半透明背景（白色） */
+  backdrop-filter: blur(5px); /* 可选：添加模糊效果 */
+  z-index: 1000; /* 确保导航栏在视频之上 */
+}
+
+/* 隐藏导航链接并添加按钮 */
+.nav {
+  display: none; /* 隐藏导航栏 */
+}
+
+.navbar-toggler {
+  display: block; /* 显示切换按钮 */
+}
+
+/* 调整切换按钮样式 */
+.navbar-toggler {
+  border: none;
+  color: white; /* 设置按钮颜色 */
+}
+
+.nav-link {
+  padding: 0.25rem 0;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 1rem;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.5);
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+.video-background-holder {
+  position: relative;
+  background-color: black;
+  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 1; /* 确保视频在 footer 下面 */
+  overflow: hidden;
+}
+
+.video-background-holder video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 0;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.video-background-content {
+  position: absolute; /* 使内容绝对定位 */
+  top: 50%; /* 垂直居中 */
+  left: 50%; /* 水平居中 */
+  transform: translate(-50%, -50%); /* 调整偏移量 */
+  z-index: 2; /* 确保内容在视频之上 */
+}
+
+.video-background-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.transparent-button {
+  background-color: rgba(255, 255, 255, 0); /* 半透明白色背景 */
+  color: white; /* 按钮文字颜色 */
+  border: 2px solid white; /* 白色边框 */
+}
+
+.transparent-button:hover {
+  background-color: rgba(255, 255, 255, 0.4); /* 悬停时的半透明效果 */
+}
+
+.footer {
+  position: absolute; /* 使 footer 绝对定位 */
+  bottom: 0; /* 贴合底部 */
+  left: 0; /* 从左侧开始 */
+  right: 0; /* 延伸到右侧 */
+  background-color: rgba(0, 0, 0, 0); /* 全透明背景 */
+  z-index: 2; /* 确保 footer 在视频上方 */
+  padding: 10px 0; /* 增加一些内边距 */
+}
+
+.footer a {
+  color: white; /* 设置链接颜色为白色 */
+}
+
+.footer b {
+  color: white; /* 设置加粗文本颜色为白色 */
+}
+@media (max-width: 576px) {
+  .video-background-holder video {
+    width: 100%;
+    height: auto; /* 保持视频比例 */
+  }
+
+  .video-background-content {
+    padding: 20px; /* 添加内边距以提高可读性 */
+  }
+
+  .display-4 {
+    font-size: 2rem; /* 调整标题字体大小 */
+  }
+
+  .lead {
+    font-size: 1rem; /* 调整段落字体大小 */
+  }
+
+  .btn {
+    padding: 10px 20px; /* 调整按钮内边距 */
+    font-size: 1rem; /* 调整按钮字体大小 */
+  }
+
+  footer {
+    padding: 10px; /* 添加底部内边距 */
+  }
+
+  footer .text-body {
+    font-size: 0.9rem; /* 调整脚注字体大小 */
+  }
+}

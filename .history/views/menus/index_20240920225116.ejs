@@ -1,0 +1,90 @@
+<% layout('layouts/boilerplate')%>
+
+<div class="container py-3">
+  <div class="text-center mb-3">
+    <a href="/menus/new" class="btn btn-lg btn-primary">Add a Menu</a>
+  </div>
+  <% for (let menu of menus){%>
+  <!-- Card Start -->
+  <div class="card">
+    <div class="row">
+      <!--carousel start-->
+      <div class="col-md-5">
+        <div
+          id="carouselExampleAutoplaying"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <% let isFirst = true; %> <%menu.images.forEach(image => { %>
+            <div class="carousel-item <%= isFirst ? 'active' : '' %>">
+              <img
+                src="<%= image.imageUrl %>"
+                class="d-block w-100"
+                alt="<%= image.imageName %>"
+                style="max-height: 300px"
+              />
+            </div>
+            <% isFirst = false; %> <% }); %>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+      <!--carousel stop-->
+      <div class="col-md-7 px-3">
+        <div class="card-body">
+          <h4 class="card-title"><%=menu.title%></h4>
+          <p class="card-text"><%=menu.description%></p>
+          <p class="card-text"><%=menu.description%></p>
+          <br />
+          <div
+            class="btn-group"
+            role="group"
+            aria-label="Basic mixed styles example"
+          >
+            <a
+              href="/menus/<%= menu.type.typeCode %>/<%= menu._id %>"
+              class="mt-auto btn"
+              style="background-color: #229799"
+              >View Review</a
+            >
+            <a
+              href="/menus/<%= menu.type.typeCode %>/<%= menu._id %>/edit"
+              class="mt-auto btn btn-primary"
+              >Edit Menu</a
+            >
+            <form
+              action="/menus/<%=menu.type.typeCode%>/<%=menu._id%>?_method=DELETE"
+              method="POST"
+            >
+              <button class="auto btn btn-danger">Delete Menu</button>
+            </form>
+          </div>
+        </div>
+        <!--card stop-->
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const menus = { features: <%- JSON.stringify(menus) %>};
+</script>

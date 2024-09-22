@@ -1,0 +1,35 @@
+html, body {
+  margin: 0; /* 去掉默认的边距 */
+  padding: 0; /* 去掉默认的内边距 */
+  height: 100%; /* 确保 body 元素的高度覆盖整个视口 */
+  width: 100%; /* 确保 body 元素的宽度覆盖整个视口 */
+}
+
+body {
+  background-image: url("/image/body.png"),url("/image/Star.GIF");
+  background-size: contain,cover;
+  background-position: left,center;
+  background-repeat: no-repeat,no-repeat;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: multiply;
+  background-attachment: fixed; /* 固定背景图像，即使页面滚动背景也不滚动 */
+}
+
+/* Hover effect for nav links */
+.navbar-nav .nav-link {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+.navbar-nav .nav-link:hover {
+  color: #fff; /* Text color on hover */
+  background-color: #007bff; /* Background color on hover */
+  border-radius: 0.25rem; /* Optional: rounded corners */
+}
+/* Optional: Navbar background color */
+.navbar {
+  background-color: #f8f9fa; /* Light background color for navbar */
+}
+/* Optional: Navbar brand hover effect */
+.navbar-brand:hover {
+  color: #007bff; /* Change color of navbar brand on hover */
+}
