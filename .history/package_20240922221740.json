@@ -1,0 +1,43 @@
+{
+  "name": "flavor-project",
+  "version": "1.0.0",
+  "description": "A project using MDB UI Kit and Express",
+  "main": "app.js",
+  "type": "module", // 设置项目为 ES 模块
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bootstrap-icons": "^1.11.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^5.1.0",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "ejs-mate": "^4.0.0",
+    "express": "^4.21.0",
+    "express-mongo-sanitize": "^2.2.0",
+    "express-session": "^1.18.0",
+    "helmet": "^7.1.0",
+    "joi": "^17.13.3",
+    "mdb-ui-kit": "^8.0.0",
+    "method-override": "^3.0.0",
+    "mongoose": "^8.6.2",
+    "multer": "^1.4.5-lts.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^8.0.0",
+    "path": "^0.12.7",
+    "sanitize-html": "^2.13.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1" // 添加 nodemon 以便于开发时自动重启服务器
+  },
+  "engines": {
+    "node": ">=16.0.0" // 确保你使用的是支持 ES 模块的 Node.js 版本
+  },
+  "keywords": [],
+  "author": "Yi Wang",
+  "license": "ISC"
+}

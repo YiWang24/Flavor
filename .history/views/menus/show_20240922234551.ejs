@@ -1,0 +1,67 @@
+<% layout('layouts/boilerplate')%>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade">
+  <div class="carousel-indicators">
+    <% let number = 0; %> <% menu.images.forEach(image => { %>
+    <button
+      type="button"
+      data-bs-target="#carouselExampleIndicators"
+      data-bs-slide-to="<%= number %>"
+      class="<%= number === 0 ? 'active' : '' %>"
+      aria-current="<%= number === 0 ? 'true' : '' %>"
+      aria-label="Slide <%= number + 1 %>"
+    ></button>
+    <p>Slide <%= number + 1 %></p>
+    <% number = number + 1; %> <% }); %>
+  </div>
+  <div class="carousel-inner">
+    <% let isFirst = true; %> <%menu.images.forEach(image => { %>
+    <div class="carousel-item <%= isFirst ? 'active' : '' %>">
+      <img
+        src="<%= image.imageUrl %>"
+        class="d-block w-100"
+        alt="<%= image.imageName %>"
+      />
+    </div>
+    <% isFirst = false; %> <% }); %>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleFade"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleFade"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<div>
+  <% if( currentUser && menu.author.equals(currentUser._id)) {%>
+  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+    <a
+      href="/menus/<%=menu.type.typeCode%>/<%=menu._id%>/edit"
+      class="mt-auto btn btn-primary"
+      >Edit Menu</a
+    >
+    <form
+      action="/menus/<%=menu.type.typeCode%>/<%=menu._id%>?_method=DELETE"
+      method="POST"
+    >
+      <button class="auto btn btn-danger">Delete Menu</button>
+    </form>
+  </div>
+  <% } %>
+</div>
+
+<script>
+  const menu = { features: <%- JSON.stringify(menu) %>};
+</script>

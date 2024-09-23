@@ -1,0 +1,61 @@
+<% layout('layouts/boilerplate')%>
+<div class="container my-4 d-flex justify-content-center">
+  <div class="card mb-3 " style="width: 50%;">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade">
+      <div class="carousel-indicators">
+        <% let number = 0; %> <% menu.images.forEach(image => { %>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="<%= number %>"
+          class="<%= number === 0 ? 'active' : '' %>"
+          aria-current="<%= number === 0 ? 'true' : '' %>"
+          aria-label="Slide <%= number + 1 %>"
+        ></button>
+        <% number = number + 1; %> <% }); %>
+      </div>
+      <div class="carousel-inner">
+        <% let isFirst = true; %> <%menu.images.forEach(image => { %>
+        <div class="carousel-item <%= isFirst ? 'active' : '' %>">
+          <img
+            src="<%= image.imageUrl %>"
+            class="d-block  card-img-top"
+            alt="<%= image.imageName %>"
+          />
+        </div>
+        <% isFirst = false; %> <% }); %>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%=menu.title%></h5>
+      <p class="card-text"><%=menu.description%></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+      2 days ago
+    </div>
+    
+  </div>
+</div>
+
+<script>
+  const menu = { features: <%- JSON.stringify(menu) %>};
+</script>
